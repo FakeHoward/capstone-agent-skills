@@ -1,0 +1,467 @@
+{
+  "$schema": "schemas/skills.manifest.schema.json",
+  "version": 1,
+  "source": {
+    "upstream_url": "https://github.com/capstone-engine/capstone",
+    "branch": "next",
+    "commit": "1c1f6f4e",
+    "api": "6 alpha"
+  },
+  "auto_invoke_policy": {
+    "default": true,
+    "forbid_disable_model_invocation": true,
+    "description": "All Capstone skills are auto-invokable. Do not set disable-model-invocation: true; discovery relies on WHAT+WHEN descriptions and triggers.json."
+  },
+  "skills": [
+    {
+      "id": "capstone-arch-aarch64",
+      "path": "skills/capstone-arch-aarch64",
+      "category": "arch",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-arch-alpha",
+      "path": "skills/capstone-arch-alpha",
+      "category": "arch",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-arch-arc",
+      "path": "skills/capstone-arch-arc",
+      "category": "arch",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-arch-arm",
+      "path": "skills/capstone-arch-arm",
+      "category": "arch",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-arch-bpf",
+      "path": "skills/capstone-arch-bpf",
+      "category": "arch",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-arch-evm",
+      "path": "skills/capstone-arch-evm",
+      "category": "arch",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-arch-hppa",
+      "path": "skills/capstone-arch-hppa",
+      "category": "arch",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-arch-loongarch",
+      "path": "skills/capstone-arch-loongarch",
+      "category": "arch",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-arch-m680x",
+      "path": "skills/capstone-arch-m680x",
+      "category": "arch",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-arch-m68k",
+      "path": "skills/capstone-arch-m68k",
+      "category": "arch",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-arch-mips",
+      "path": "skills/capstone-arch-mips",
+      "category": "arch",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-arch-mos65xx",
+      "path": "skills/capstone-arch-mos65xx",
+      "category": "arch",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-arch-ppc",
+      "path": "skills/capstone-arch-ppc",
+      "category": "arch",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-arch-riscv",
+      "path": "skills/capstone-arch-riscv",
+      "category": "arch",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-arch-sh",
+      "path": "skills/capstone-arch-sh",
+      "category": "arch",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-arch-sparc",
+      "path": "skills/capstone-arch-sparc",
+      "category": "arch",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-arch-systemz",
+      "path": "skills/capstone-arch-systemz",
+      "category": "arch",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-arch-tms320c64x",
+      "path": "skills/capstone-arch-tms320c64x",
+      "category": "arch",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-arch-tricore",
+      "path": "skills/capstone-arch-tricore",
+      "category": "arch",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-arch-wasm",
+      "path": "skills/capstone-arch-wasm",
+      "category": "arch",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-arch-x86",
+      "path": "skills/capstone-arch-x86",
+      "category": "arch",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-arch-xcore",
+      "path": "skills/capstone-arch-xcore",
+      "category": "arch",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-arch-xtensa",
+      "path": "skills/capstone-arch-xtensa",
+      "category": "arch",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-cmake-build",
+      "path": "skills/capstone-cmake-build",
+      "category": "build",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-core-api",
+      "path": "skills/capstone-core-api",
+      "category": "api",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-cross-platform",
+      "path": "skills/capstone-cross-platform",
+      "category": "build",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-cstest-yaml",
+      "path": "skills/capstone-cstest-yaml",
+      "category": "tooling",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-cstool",
+      "path": "skills/capstone-cstool",
+      "category": "tooling",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-custom-memory-embedding",
+      "path": "skills/capstone-custom-memory-embedding",
+      "category": "build",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-detail-aliases",
+      "path": "skills/capstone-detail-aliases",
+      "category": "api",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-disasm-iteration",
+      "path": "skills/capstone-disasm-iteration",
+      "category": "api",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-fuzzing-crash-repro",
+      "path": "skills/capstone-fuzzing-crash-repro",
+      "category": "tooling",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-language-bindings",
+      "path": "skills/capstone-language-bindings",
+      "category": "tooling",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-operands-registers",
+      "path": "skills/capstone-operands-registers",
+      "category": "api",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-options-syntax",
+      "path": "skills/capstone-options-syntax",
+      "category": "api",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-performance-concurrency",
+      "path": "skills/capstone-performance-concurrency",
+      "category": "api",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-size-optimized-builds",
+      "path": "skills/capstone-size-optimized-builds",
+      "category": "build",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-skill-router",
+      "path": "skills/capstone-skill-router",
+      "category": "router",
+      "files": [
+        "SKILL.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-skipdata",
+      "path": "skills/capstone-skipdata",
+      "category": "api",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-troubleshooting",
+      "path": "skills/capstone-troubleshooting",
+      "category": "api",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    },
+    {
+      "id": "capstone-v6-migration",
+      "path": "skills/capstone-v6-migration",
+      "category": "api",
+      "files": [
+        "SKILL.md",
+        "examples.md",
+        "reference.md"
+      ],
+      "auto_invoke": true
+    }
+  ]
+}

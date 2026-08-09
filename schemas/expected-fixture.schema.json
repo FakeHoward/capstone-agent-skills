@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://capstone-agent-skills.local/schemas/expected-fixture.schema.json",
+  "title": "Capstone expected disasm fixture",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "$schema": { "type": "string" },
+    "arch": { "type": "string" },
+    "mode": { "type": "string" },
+    "address": { "type": "string" },
+    "options": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "upstream": {
+      "type": ["string", "array"],
+      "items": { "type": "string" }
+    },
+    "insns": {
+      "type": "array",
+      "items": { "type": "object", "additionalProperties": true }
+    },
+    "cases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "options": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "insns": {
+            "type": "array",
+            "items": { "type": "object", "additionalProperties": true }
+          }
+        }
+      }
+    }
+  }
+}

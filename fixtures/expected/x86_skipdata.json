@@ -1,0 +1,34 @@
+{
+  "$schema": "../../schemas/expected-fixture.schema.json",
+  "arch": "CS_ARCH_X86",
+  "mode": "CS_MODE_32",
+  "options": [
+    "CS_OPT_SKIPDATA"
+  ],
+  "address": "0x1000",
+  "upstream": [
+    "tests/features/skipdata.yaml",
+    "tests/integration/test_skipdata.c"
+  ],
+  "insns": [
+    {
+      "asm_text": "lea ecx, [edx + esi + 8]"
+    },
+    {
+      "asm_text": "add eax, ebx"
+    },
+    {
+      "asm_text": "add esi, 0x1234"
+    },
+    {
+      "asm_text": ".byte 0x00",
+      "id": 0
+    },
+    {
+      "asm_text": "xchg ecx, eax"
+    },
+    {
+      "asm_text": "xchg edx, eax"
+    }
+  ]
+}

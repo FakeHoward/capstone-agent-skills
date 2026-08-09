@@ -1,0 +1,21 @@
+{
+  "$schema": "../../schemas/expected-fixture.schema.json",
+  "arch": "CS_ARCH_RISCV",
+  "mode": "CS_MODE_RISCV64",
+  "options": [
+    "CS_OPT_DETAIL",
+    "CS_OPT_DETAIL_REAL"
+  ],
+  "upstream": "tests/unit/riscv_reg_access.c",
+  "insns": [
+    {
+      "asm_hint": "addi a0, a1, 10",
+      "regs_read": [
+        "RISCV_REG_X11"
+      ],
+      "regs_write": [
+        "RISCV_REG_X10"
+      ]
+    }
+  ]
+}

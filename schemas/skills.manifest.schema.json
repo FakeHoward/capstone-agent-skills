@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://capstone-agent-skills.local/schemas/skills.manifest.schema.json",
+  "title": "Capstone agent skills manifest",
+  "type": "object",
+  "required": ["version", "source", "auto_invoke_policy", "skills"],
+  "additionalProperties": true,
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "type": "integer", "const": 1 },
+    "source": {
+      "type": "object",
+      "required": ["upstream_url", "branch", "commit", "api"],
+      "additionalProperties": true,
+      "properties": {
+        "upstream_url": { "type": "string", "minLength": 1 },
+        "branch": { "type": "string", "minLength": 1 },
+        "commit": { "type": "string", "minLength": 1 },
+        "api": { "type": "string", "minLength": 1 }
+      }
+    },
+    "auto_invoke_policy": {
+      "type": "object",
+      "required": ["default", "forbid_disable_model_invocation"],
+      "additionalProperties": true,
+      "properties": {
+        "default": { "type": "boolean" },
+        "forbid_disable_model_invocation": { "type": "boolean" },
+        "description": { "type": "string" }
+      }
+    },
+    "skills": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "path", "category", "files", "auto_invoke"],
+        "additionalProperties": true,
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "path": { "type": "string", "minLength": 1 },
+          "category": {
+            "type": "string",
+            "enum": ["router", "arch", "build", "tooling", "api"]
+          },
+          "files": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "auto_invoke": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}

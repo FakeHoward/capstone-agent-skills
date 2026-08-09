@@ -1,0 +1,56 @@
+{
+  "$schema": "../schemas/pointers.schema.json",
+  "version": 1,
+  "pointers": [
+    {
+      "id": "x86-batch",
+      "scenario": "x86-64 batch disasm smoke",
+      "skill": "capstone-disasm-iteration",
+      "arch": "CS_ARCH_X86",
+      "mode": "CS_MODE_64",
+      "upstream": "tests/details/cs_common_details.yaml",
+      "hex": "fixtures/hex/x86_batch.hex",
+      "expected": "fixtures/expected/x86_batch.json"
+    },
+    {
+      "id": "x86-skipdata",
+      "scenario": "x86-32 skipdata mixed code/data",
+      "skill": "capstone-skipdata",
+      "arch": "CS_ARCH_X86",
+      "mode": "CS_MODE_32",
+      "upstream": "tests/features/skipdata.yaml",
+      "hex": "fixtures/hex/x86_skipdata.hex",
+      "expected": "fixtures/expected/x86_skipdata.json"
+    },
+    {
+      "id": "aarch64-smoke",
+      "scenario": "AArch64 single-insn smoke",
+      "skill": "capstone-arch-aarch64",
+      "arch": "CS_ARCH_AARCH64",
+      "mode": "CS_MODE_ARM",
+      "upstream": "tests/details/cs_common_details.yaml",
+      "hex": "fixtures/hex/aarch64_smoke.hex",
+      "expected": "fixtures/expected/aarch64_smoke.json"
+    },
+    {
+      "id": "alias-detail",
+      "scenario": "RISCV ret alias vs DETAIL_REAL",
+      "skill": "capstone-detail-aliases",
+      "arch": "CS_ARCH_RISCV",
+      "mode": "CS_MODE_RISCV64",
+      "upstream": "tests/issues/issues.yaml",
+      "hex": "fixtures/hex/alias_detail.hex",
+      "expected": "fixtures/expected/alias_detail.json"
+    },
+    {
+      "id": "riscv-regs",
+      "scenario": "RISCV regs_access addi read/write",
+      "skill": "capstone-arch-riscv",
+      "arch": "CS_ARCH_RISCV",
+      "mode": "CS_MODE_RISCV64",
+      "upstream": "tests/unit/riscv_reg_access.c",
+      "hex": "fixtures/hex/riscv_regs.hex",
+      "expected": "fixtures/expected/riscv_regs.json"
+    }
+  ]
+}

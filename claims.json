@@ -1,0 +1,150 @@
+{
+  "$schema": "schemas/claims.schema.json",
+  "version": 1,
+  "claims": [
+    {
+      "id": "api-major-6",
+      "skill": "capstone-core-api",
+      "risk": "medium",
+      "statement": "Public CS_API_MAJOR is 6 on next/alpha.",
+      "source_path": "include/capstone/capstone.h",
+      "regex": "#define\\s+CS_API_MAJOR\\s+6\\b"
+    },
+    {
+      "id": "aarch64-arm64-same-enum",
+      "skill": "capstone-v6-migration",
+      "risk": "high",
+      "statement": "CS_ARCH_AARCH64 and CS_ARCH_ARM64 share value 1.",
+      "source_path": "include/capstone/capstone.h",
+      "regex": "CS_ARCH_ARM64\\s*=\\s*1[\\s\\S]{0,80}CS_ARCH_AARCH64\\s*=\\s*1"
+    },
+    {
+      "id": "systemz-sysz-same-enum",
+      "skill": "capstone-v6-migration",
+      "risk": "high",
+      "statement": "CS_ARCH_SYSZ and CS_ARCH_SYSTEMZ share value 2.",
+      "source_path": "include/capstone/capstone.h",
+      "regex": "CS_ARCH_SYSZ\\s*=\\s*2[\\s\\S]{0,80}CS_ARCH_SYSTEMZ\\s*=\\s*2"
+    },
+    {
+      "id": "detail-opt-or-assign",
+      "skill": "capstone-detail-aliases",
+      "risk": "high",
+      "statement": "CS_OPT_DETAIL uses |= so CS_OPT_OFF cannot clear detail.",
+      "source_path": "cs.c",
+      "regex": "case\\s+CS_OPT_DETAIL:\\s*\\n\\s*handle->detail_opt\\s*\\|="
+    },
+    {
+      "id": "detail-real-flag",
+      "skill": "capstone-detail-aliases",
+      "risk": "medium",
+      "statement": "CS_OPT_DETAIL_REAL is defined as 1<<1.",
+      "source_path": "include/capstone/capstone.h",
+      "regex": "CS_OPT_DETAIL_REAL\\s*=\\s*\\n?\\s*1\\s*\\n?\\s*<<\\s*1"
+    },
+    {
+      "id": "skipdata-default-255",
+      "skill": "capstone-troubleshooting",
+      "risk": "high",
+      "statement": "skipdata_size default returns (uint8_t)-1 (255) for unlisted arches (e.g. Xtensa).",
+      "source_path": "cs.c",
+      "regex": "static\\s+uint8_t\\s+skipdata_size\\([\\s\\S]*?default:\\s*\\n\\s*// should never reach\\s*\\n\\s*return\\s*\\(uint8_t\\)-1;"
+    },
+    {
+      "id": "skipdata-x86-stride-1",
+      "skill": "capstone-skipdata",
+      "risk": "medium",
+      "statement": "X86 skipdata stride is 1.",
+      "source_path": "cs.c",
+      "regex": "case\\s+CS_ARCH_X86:\\s*\\n(?:[^\\n]*\\n){0,3}\\s*return\\s+1;"
+    },
+    {
+      "id": "skipdata-no-xtensa-case",
+      "skill": "capstone-arch-xtensa",
+      "risk": "high",
+      "statement": "skipdata_size switch ends at ARC with no CS_ARCH_XTENSA case.",
+      "source_path": "cs.c",
+      "regex": "case\\s+CS_ARCH_ARC:[\\s\\S]{0,200}?return\\s+2;\\s*\\n\\s*\\}\\s*\\n\\}"
+    },
+    {
+      "id": "opt-mem-before-open",
+      "skill": "capstone-custom-memory-embedding",
+      "risk": "medium",
+      "statement": "CS_OPT_MEM may be set with NULL handle before cs_open.",
+      "source_path": "cs.c",
+      "regex": "cs_option\\(\\)\\s+can\\s+be\\s+called\\s+with\\s+NULL\\s+handle\\s+just\\s+for\\s+CS_OPT_MEM"
+    },
+    {
+      "id": "cmake-default-alloc-on",
+      "skill": "capstone-cmake-build",
+      "risk": "medium",
+      "statement": "CAPSTONE_USE_DEFAULT_ALLOC defaults ON.",
+      "source_path": "CMakeLists.txt",
+      "regex": "option\\(CAPSTONE_USE_DEFAULT_ALLOC\\s+\"[^\"]*\"\\s+ON\\)"
+    },
+    {
+      "id": "cmake-shared-default-off",
+      "skill": "capstone-cmake-build",
+      "risk": "medium",
+      "statement": "Shared libs default OFF; static ON.",
+      "source_path": "CMakeLists.txt",
+      "regex": "option\\(CAPSTONE_BUILD_SHARED_LIBS\\s+\"[^\"]*\"\\s+OFF\\)[\\s\\S]{0,120}option\\(CAPSTONE_BUILD_STATIC_LIBS\\s+\"[^\"]*\"\\s+ON\\)"
+    },
+    {
+      "id": "cmake-cstest-gates-unit-integration",
+      "skill": "capstone-cmake-build",
+      "risk": "high",
+      "statement": "CAPSTONE_BUILD_CSTEST=ON gates tests/unit and tests/integration subdirs.",
+      "source_path": "CMakeLists.txt",
+      "regex": "if\\(CAPSTONE_BUILD_CSTEST\\)[\\s\\S]*?add_subdirectory\\(\\$\\{TESTS_INTEGRATION_DIR\\}\\)[\\s\\S]*?add_subdirectory\\(\\$\\{TESTS_UNIT_DIR\\}\\)"
+    },
+    {
+      "id": "regs-access-null-check",
+      "skill": "capstone-operands-registers",
+      "risk": "high",
+      "statement": "cs_regs_access requires handle->reg_access callback.",
+      "source_path": "cs.c",
+      "regex": "if\\s*\\(\\s*handle->reg_access\\s*\\)\\s*\\{"
+    },
+    {
+      "id": "x86-batch-fixture-bytes",
+      "skill": "capstone-arch-x86",
+      "risk": "low",
+      "statement": "Classic x86-64 sample bytes exist in shared details tests.",
+      "source_path": "tests/details/cs_common_details.yaml",
+      "regex": "0x55,\\s*0x48,\\s*0x8b,\\s*0x05,\\s*0xb8,\\s*0x13,\\s*0x00,\\s*0x00"
+    },
+    {
+      "id": "riscv-alias-ret-real",
+      "skill": "capstone-detail-aliases",
+      "risk": "high",
+      "statement": "RISCV ret alias has uses_alias_details -1 under DETAIL_REAL.",
+      "source_path": "tests/issues/issues.yaml",
+      "regex": "bytes:\\s*\\[\\s*0x67,\\s*0x80,\\s*0x00,\\s*0x00\\s*\\][\\s\\S]{0,200}CS_OPT_DETAIL_REAL[\\s\\S]{0,200}uses_alias_details:\\s*-1"
+    },
+    {
+      "id": "riscv-reg-access-addi",
+      "skill": "capstone-arch-riscv",
+      "risk": "medium",
+      "statement": "Unit test encodes addi a0,a1,10 as 0x00a58513 little-endian bytes.",
+      "source_path": "tests/unit/riscv_reg_access.c",
+      "regex": "uint8_t\\s+addi_code\\[\\]\\s*=\\s*\\{\\s*0x13,\\s*0x85,\\s*0xa5,\\s*0x00\\s*\\}"
+    },
+    {
+      "id": "xtensa-litbase-mask",
+      "skill": "capstone-options-syntax",
+      "risk": "high",
+      "statement": "Xtensa L32R Extended resolution uses LITBASE & 0xfffff000 when LSB set.",
+      "source_path": "arch/Xtensa/XtensaMapping.c",
+      "regex": "LITBASE\\s*&\\s*0xfffff000"
+    },
+    {
+      "id": "arch-register-ends-at-arc",
+      "skill": "capstone-size-optimized-builds",
+      "risk": "high",
+      "statement": "CS_ARCH_REGISTER helpers in cs.c end at ARC; no HPPA/Xtensa register exports.",
+      "source_path": "cs.c",
+      "regex": "CS_ARCH_REGISTER\\(ARC\\);\\s*\\n#endif"
+    }
+  ]
+}

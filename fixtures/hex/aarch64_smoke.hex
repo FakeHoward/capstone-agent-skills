@@ -1,0 +1,1 @@
+09 00 38 d5  # mrs x9, MIDR_EL1 — tests/details/cs_common_details.yaml

@@ -1,0 +1,19 @@
+{
+  "$schema": "../../schemas/expected-fixture.schema.json",
+  "arch": "CS_ARCH_X86",
+  "mode": "CS_MODE_64",
+  "address": "0x1000",
+  "upstream": "tests/details/cs_common_details.yaml",
+  "insns": [
+    {
+      "asm_text": "push rbp",
+      "mnemonic": "push",
+      "op_str": "rbp"
+    },
+    {
+      "asm_text": "mov rax, qword ptr [rip + 0x13b8]",
+      "mnemonic": "mov",
+      "op_str": "rax, qword ptr [rip + 0x13b8]"
+    }
+  ]
+}

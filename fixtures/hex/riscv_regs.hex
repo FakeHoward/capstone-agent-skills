@@ -1,0 +1,1 @@
+13 85 a5 00  # addi a0, a1, 10 — tests/unit/riscv_reg_access.c

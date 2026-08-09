@@ -1,0 +1,37 @@
+{
+  "$schema": "../../schemas/expected-fixture.schema.json",
+  "arch": "CS_ARCH_RISCV",
+  "mode": "CS_MODE_RISCV64",
+  "upstream": "tests/issues/issues.yaml",
+  "cases": [
+    {
+      "options": [
+        "CS_OPT_DETAIL"
+      ],
+      "insns": [
+        {
+          "asm_text": "ret",
+          "id": "RISCV_INS_JALR",
+          "is_alias": 1,
+          "alias_id": "RISCV_INS_ALIAS_RET",
+          "uses_alias_details": 1
+        }
+      ]
+    },
+    {
+      "options": [
+        "CS_OPT_DETAIL",
+        "CS_OPT_DETAIL_REAL"
+      ],
+      "insns": [
+        {
+          "asm_text": "ret",
+          "id": "RISCV_INS_JALR",
+          "is_alias": 1,
+          "alias_id": "RISCV_INS_ALIAS_RET",
+          "uses_alias_details": -1
+        }
+      ]
+    }
+  ]
+}

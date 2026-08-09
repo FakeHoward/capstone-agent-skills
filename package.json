@@ -1,0 +1,42 @@
+{
+  "name": "capstone-agent-skills",
+  "version": "1.0.0",
+  "description": "Agent skills for Capstone Engine (Cursor, Claude Code, Codex)",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "capstone-agent-skills": "./bin/capstone-agent-skills.js"
+  },
+  "files": [
+    "bin/",
+    "skills/",
+    "fixtures/",
+    "schemas/",
+    "scripts/",
+    "skills.manifest.json",
+    "claims.json",
+    "triggers.json",
+    "LICENSE",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FakeHoward/capstone-agent-skills.git"
+  },
+  "keywords": [
+    "capstone",
+    "agent-skills",
+    "cursor",
+    "claude-code",
+    "codex",
+    "disassembler"
+  ],
+  "scripts": {
+    "test": "node --test tests/node/*.test.js && python -m unittest discover -s tests -v",
+    "validate": "python scripts/validate_skills.py",
+    "install-skills": "node ./bin/capstone-agent-skills.js"
+  }
+}

@@ -1,0 +1,144 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Keep in sync with skills.manifest.json source.commit / branch.
+  CAPSTONE_BRANCH: next
+  CAPSTONE_COMMIT: 1c1f6f4e9fc6598baf783c841a5adddf32da8f7e
+  PYTHONUTF8: "1"
+  CMAKE_GENERATOR: Ninja
+
+jobs:
+  validate:
+    name: Validate and unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout skills
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Checkout Capstone pin
+        uses: actions/checkout@v4
+        with:
+          repository: capstone-engine/capstone
+          ref: ${{ env.CAPSTONE_COMMIT }}
+          path: _capstone
+
+      - name: Confirm Capstone revision
+        run: |
+          set -euo pipefail
+          cd _capstone
+          got="$(git rev-parse HEAD)"
+          echo "HEAD=$got"
+          test "$got" = "${CAPSTONE_COMMIT}"
+
+      - name: Validate package against Capstone
+        run: python scripts/validate_skills.py --capstone _capstone
+
+      - name: Python unit tests
+        run: |
+          ln -sfn "$GITHUB_WORKSPACE/_capstone" "$GITHUB_WORKSPACE/../capstone"
+          python -m unittest discover -s tests -v
+
+      - name: Node installer tests
+        run: node --test tests/node/*.test.js
+
+      - name: npx skills discovery
+        run: |
+          set -euo pipefail
+          npx --yes skills@latest add "$GITHUB_WORKSPACE" --list | tee skills-list.txt
+          grep -q 'capstone-core-api' skills-list.txt
+          grep -q 'capstone-arch-x86' skills-list.txt
+          count="$(grep -E 'capstone-' skills-list.txt | wc -l | tr -d ' ')"
+          test "$count" -ge 41
+
+      - name: npx skills install smoke (project copy)
+        run: |
+          set -euo pipefail
+          work="$(mktemp -d)"
+          cd "$work"
+          npx --yes skills@latest add "$GITHUB_WORKSPACE" \
+            --skill capstone-core-api \
+            -a cursor -a claude-code -a codex \
+            --copy -y
+          mapfile -t hits < <(find "$work" -type f -path '*capstone-core-api/SKILL.md' | sort)
+          printf 'installed:\n'
+          printf '%s\n' "${hits[@]}"
+          test "${#hits[@]}" -ge 1
+          # Expect installs for the three requested agents when the CLI supports them.
+          for frag in '.cursor/skills/' '.claude/skills/' '.agents/skills/'; do
+            if printf '%s\n' "${hits[@]}" | grep -Fq "$frag"; then
+              echo "ok agent path fragment: $frag"
+            fi
+          done
+
+  runtime-smoke:
+    name: Capstone runtime smoke
+    runs-on: ubuntu-latest
+    needs: validate
+    steps:
+      - name: Checkout skills
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install build tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            build-essential cmake ninja-build pkg-config libyaml-dev
+
+      - name: Checkout Capstone pin
+        uses: actions/checkout@v4
+        with:
+          repository: capstone-engine/capstone
+          ref: ${{ env.CAPSTONE_COMMIT }}
+          path: _capstone
+
+      - name: Runtime smoke (configure, build, fixtures)
+        run: |
+          set -euo pipefail
+          python scripts/runtime_smoke.py \
+            --capstone _capstone \
+            --build-dir _capstone/build-skill-smoke \
+            | tee runtime-smoke.log
+          if grep -E '^\[SKIP\] (cstool-version|x86-batch|x86-detail|x86-skipdata|aarch64-smoke)\b' runtime-smoke.log; then
+            echo "Expected PASS for cstool fixture scenarios on CI runner" >&2
+            exit 1
+          fi
+          if grep -E '^SUMMARY .*fail=[1-9]' runtime-smoke.log; then
+            exit 1
+          fi
+
+      - name: Upload smoke logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: runtime-smoke-logs
+          path: |
+            runtime-smoke.log
+            _capstone/build-skill-smoke/CMakeCache.txt
+            _capstone/build-skill-smoke/CMakeFiles/CMakeOutput.log
+            _capstone/build-skill-smoke/CMakeFiles/CMakeError.log
+          if-no-files-found: ignore

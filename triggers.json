@@ -1,0 +1,498 @@
+{
+  "$schema": "schemas/triggers.schema.json",
+  "version": 1,
+  "triggers": [
+    {
+      "skill": "capstone-arch-aarch64",
+      "required_terms": [
+        "CS_ARCH_AARCH64",
+        "CS_ARCH_ARM64",
+        "AArch64Module"
+      ],
+      "blind_prompts": [
+        "Capstone AArch64 SME/SVE operand detail help.",
+        "Is CS_ARCH_ARM64 still valid in Capstone API 6?"
+      ]
+    },
+    {
+      "skill": "capstone-arch-alpha",
+      "required_terms": [
+        "CS_ARCH_ALPHA",
+        "DEC Alpha",
+        "alphabe"
+      ],
+      "blind_prompts": [
+        "Capstone Alpha big-endian alphabe mode.",
+        "Alpha REG/IMM detail without alias IDs."
+      ]
+    },
+    {
+      "skill": "capstone-arch-arc",
+      "required_terms": [
+        "CS_ARCH_ARC",
+        "ARCModule",
+        "cs_arc"
+      ],
+      "blind_prompts": [
+        "Capstone ARC little-endian REG/IMM detail.",
+        "Does ARC flatten memory operands?"
+      ]
+    },
+    {
+      "skill": "capstone-arch-arm",
+      "required_terms": [
+        "CS_ARCH_ARM",
+        "CS_MODE_THUMB",
+        "ARMModule"
+      ],
+      "blind_prompts": [
+        "Disassemble Thumb-2 with Capstone CS_ARCH_ARM.",
+        "What ARM modes does Capstone allow with MCLASS/V8?"
+      ]
+    },
+    {
+      "skill": "capstone-arch-bpf",
+      "required_terms": [
+        "CS_ARCH_BPF",
+        "CS_MODE_BPF_CLASSIC",
+        "eBPF"
+      ],
+      "blind_prompts": [
+        "Capstone classic BPF vs extended eBPF modes.",
+        "cBPF mnemonic synonyms in Capstone."
+      ]
+    },
+    {
+      "skill": "capstone-arch-evm",
+      "required_terms": [
+        "CS_ARCH_EVM",
+        "Ethereum bytecode",
+        "evm.h"
+      ],
+      "blind_prompts": [
+        "Disassemble Ethereum bytecode with Capstone EVM.",
+        "Does EVM expose regs_access?"
+      ]
+    },
+    {
+      "skill": "capstone-arch-hppa",
+      "required_terms": [
+        "CS_ARCH_HPPA",
+        "PA-RISC",
+        "hppa20"
+      ],
+      "blind_prompts": [
+        "Capstone HPPA 2.0W little-endian modes.",
+        "HPPA MEM space operands and regs_access."
+      ]
+    },
+    {
+      "skill": "capstone-arch-loongarch",
+      "required_terms": [
+        "CS_ARCH_LOONGARCH",
+        "LoongArchModule",
+        "partial instruction aliases"
+      ],
+      "blind_prompts": [
+        "Capstone LoongArch LA64 detail and alias gaps.",
+        "cs_regs_access behavior on LoongArch."
+      ]
+    },
+    {
+      "skill": "capstone-arch-m680x",
+      "required_terms": [
+        "CS_ARCH_M680X",
+        "multi-chip priority",
+        "M680XModule"
+      ],
+      "blind_prompts": [
+        "Capstone M680X requires at least one chip mode.",
+        "M680X multi-chip priority rules."
+      ]
+    },
+    {
+      "skill": "capstone-arch-m68k",
+      "required_terms": [
+        "CS_ARCH_M68K",
+        "CS_OPT_MODE no-op",
+        "ColdFire"
+      ],
+      "blind_prompts": [
+        "Capstone M68K runtime MODE no-op reopen behavior.",
+        "Disassemble ColdFire with Capstone."
+      ]
+    },
+    {
+      "skill": "capstone-arch-mips",
+      "required_terms": [
+        "CS_ARCH_MIPS",
+        "MipsModule",
+        "NANOMIPS"
+      ],
+      "blind_prompts": [
+        "Capstone MIPS microMIPS and nanoMIPS modes.",
+        "Set Capstone MIPS NO_DOLLAR syntax."
+      ]
+    },
+    {
+      "skill": "capstone-arch-mos65xx",
+      "required_terms": [
+        "CS_ARCH_MOS65XX",
+        "LONG_MX",
+        "6502/65816"
+      ],
+      "blind_prompts": [
+        "Capstone 65816 modes via LONG_M/LONG_X/LONG_MX.",
+        "MOS65XX Motorola syntax options."
+      ]
+    },
+    {
+      "skill": "capstone-arch-ppc",
+      "required_terms": [
+        "CS_ARCH_PPC",
+        "CS_MODE_BOOKE",
+        "no cs_regs_access"
+      ],
+      "blind_prompts": [
+        "Capstone PowerPC little-endian mode exception.",
+        "Does PPC support cs_regs_access?"
+      ]
+    },
+    {
+      "skill": "capstone-arch-riscv",
+      "required_terms": [
+        "CS_ARCH_RISCV",
+        "CS_OPT_SYNTAX_NO_ALIAS_TEXT",
+        "RISCVModule"
+      ],
+      "blind_prompts": [
+        "Capstone RISC-V compressed decode and alias text options.",
+        "Which RISC-V extension flags are actually wired?"
+      ]
+    },
+    {
+      "skill": "capstone-arch-sh",
+      "required_terms": [
+        "CS_ARCH_SH",
+        "SH4A",
+        "CS_OPT_MODE no-op"
+      ],
+      "blind_prompts": [
+        "Capstone SuperH SH4A FPU mode reopen rules.",
+        "SH CS_OPT_MODE no-op behavior."
+      ]
+    },
+    {
+      "skill": "capstone-arch-sparc",
+      "required_terms": [
+        "CS_ARCH_SPARC",
+        "CS_MODE_V9",
+        "missing cs_regs_access"
+      ],
+      "blind_prompts": [
+        "Capstone SPARC V9 little-endian modes.",
+        "Does SPARC implement cs_regs_access?"
+      ]
+    },
+    {
+      "skill": "capstone-arch-systemz",
+      "required_terms": [
+        "CS_ARCH_SYSTEMZ",
+        "CAPSTONE_SYSTEMZ_COMPAT_HEADER",
+        "SYSZ"
+      ],
+      "blind_prompts": [
+        "Capstone SystemZ Arch vs Z CPU modes.",
+        "Use SYSZ compatibility names with Capstone API 6."
+      ]
+    },
+    {
+      "skill": "capstone-arch-tms320c64x",
+      "required_terms": [
+        "CS_ARCH_TMS320C64X",
+        "TMS320C64xModule",
+        "lack of cs_regs_access"
+      ],
+      "blind_prompts": [
+        "Capstone TMS320C64x funit and parallel detail.",
+        "TMS320C64x CS_OPT_MODE OR semantics."
+      ]
+    },
+    {
+      "skill": "capstone-arch-tricore",
+      "required_terms": [
+        "CS_ARCH_TRICORE",
+        "Infineon AURIX",
+        "update_flags"
+      ],
+      "blind_prompts": [
+        "Capstone TriCore version modes for AURIX.",
+        "TriCore update_flags and regs_access."
+      ]
+    },
+    {
+      "skill": "capstone-arch-wasm",
+      "required_terms": [
+        "CS_ARCH_WASM",
+        "WebAssembly",
+        "missing cs_regs_access"
+      ],
+      "blind_prompts": [
+        "Capstone WASM mode 0 and rejected arch options.",
+        "Disassemble i32.const with Capstone wasm.h."
+      ]
+    },
+    {
+      "skill": "capstone-arch-x86",
+      "required_terms": [
+        "CS_ARCH_X86",
+        "X86_REDUCE",
+        "ModRM"
+      ],
+      "blind_prompts": [
+        "Capstone x86-64 Intel syntax with ModRM detail.",
+        "What happens if CAPSTONE_X86_ATT_DISABLE is set?"
+      ]
+    },
+    {
+      "skill": "capstone-arch-xcore",
+      "required_terms": [
+        "CS_ARCH_XCORE",
+        "XCoreModule",
+        "lack of cs_regs_access"
+      ],
+      "blind_prompts": [
+        "Capstone XCore detail operands and skipdata alignment.",
+        "Does XCore support cs_regs_access?"
+      ]
+    },
+    {
+      "skill": "capstone-arch-xtensa",
+      "required_terms": [
+        "CS_ARCH_XTENSA",
+        "CS_OPT_LITBASE",
+        "ESP32"
+      ],
+      "blind_prompts": [
+        "Capstone Xtensa LITBASE for L32R on ESP32.",
+        "Xtensa CS_OPT_MODE OR semantics."
+      ]
+    },
+    {
+      "skill": "capstone-cmake-build",
+      "required_terms": [
+        "CMake",
+        "CMakePresets.json",
+        "BUILDING.md"
+      ],
+      "blind_prompts": [
+        "Configure Capstone with CMake static vs shared defaults.",
+        "Is make.sh still the recommended Capstone build?"
+      ]
+    },
+    {
+      "skill": "capstone-core-api",
+      "required_terms": [
+        "cs_open",
+        "cs_close",
+        "cs_errno"
+      ],
+      "blind_prompts": [
+        "How do I open a Capstone handle and check cs_errno?",
+        "Bootstrap Capstone API 6 alpha lifecycle with cs_support."
+      ]
+    },
+    {
+      "skill": "capstone-cross-platform",
+      "required_terms": [
+        "Android NDK",
+        "cross_configs",
+        "MSVC"
+      ],
+      "blind_prompts": [
+        "Cross-compile Capstone for Android with NDK.",
+        "Windows MSVC CMake notes for Capstone."
+      ]
+    },
+    {
+      "skill": "capstone-cstest-yaml",
+      "required_terms": [
+        "cstest",
+        "CAPSTONE_BUILD_CSTEST",
+        "is_alias"
+      ],
+      "blind_prompts": [
+        "Author a Capstone YAML test for cstest.",
+        "Fix boolean encoding quirks in Capstone MC YAML."
+      ]
+    },
+    {
+      "skill": "capstone-cstool",
+      "required_terms": [
+        "cstool",
+        "CAPSTONE_BUILD_CSTOOL",
+        "-d/-r/-a"
+      ],
+      "blind_prompts": [
+        "Disassemble a hex dump with cstool -d.",
+        "How do I build the cstool target?"
+      ]
+    },
+    {
+      "skill": "capstone-custom-memory-embedding",
+      "required_terms": [
+        "CAPSTONE_USE_DEFAULT_ALLOC",
+        "CS_ERR_MEMSETUP",
+        "CAPSTONE_OSXKERNEL_SUPPORT"
+      ],
+      "blind_prompts": [
+        "Replace Capstone malloc with CS_OPT_MEM for a driver.",
+        "Embed Capstone in a Windows kernel driver."
+      ]
+    },
+    {
+      "skill": "capstone-detail-aliases",
+      "required_terms": [
+        "CS_OPT_DETAIL_REAL",
+        "is_alias",
+        "usesAliasDetails"
+      ],
+      "blind_prompts": [
+        "Why won't Capstone detail turn off with CS_OPT_OFF?",
+        "Difference between alias details and CS_OPT_DETAIL_REAL?"
+      ]
+    },
+    {
+      "skill": "capstone-disasm-iteration",
+      "required_terms": [
+        "cs_disasm",
+        "cs_disasm_iter",
+        "cs_malloc"
+      ],
+      "blind_prompts": [
+        "Should I use cs_disasm or cs_disasm_iter for a streaming buffer?",
+        "When must I call cs_malloc before Capstone iter decode?"
+      ]
+    },
+    {
+      "skill": "capstone-fuzzing-crash-repro",
+      "required_terms": [
+        "OSS-Fuzz",
+        "fuzz_disasm",
+        "suite/fuzz"
+      ],
+      "blind_prompts": [
+        "Reproduce an OSS-Fuzz Capstone crash with cstool.",
+        "Decode the fuzz platform byte for suite/fuzz inputs."
+      ]
+    },
+    {
+      "skill": "capstone-language-bindings",
+      "required_terms": [
+        "bindings/",
+        "LIBCAPSTONE_PATH",
+        "cstest_py"
+      ],
+      "blind_prompts": [
+        "Which language bindings ship in-tree under bindings/?",
+        "How do I point Python bindings at LIBCAPSTONE_PATH?"
+      ]
+    },
+    {
+      "skill": "capstone-operands-registers",
+      "required_terms": [
+        "cs_regs_access",
+        "cs_op_count",
+        "CS_ERR_ARCH"
+      ],
+      "blind_prompts": [
+        "How do I query cs_regs_access and which arches lack reg_access?",
+        "Use cs_op_count and cs_reg_read on Capstone instructions."
+      ]
+    },
+    {
+      "skill": "capstone-options-syntax",
+      "required_terms": [
+        "CS_OPT_SYNTAX_*",
+        "CS_OPT_MNEMONIC",
+        "CS_OPT_LITBASE"
+      ],
+      "blind_prompts": [
+        "Set Capstone Intel vs ATT syntax and custom mnemonics.",
+        "How do CS_OPT_UNSIGNED and CS_OPT_LITBASE work?"
+      ]
+    },
+    {
+      "skill": "capstone-performance-concurrency",
+      "required_terms": [
+        "one handle per thread",
+        "CS_OPT_MEM",
+        "CS_OPT_SYNTAX_CS_REG_ALIAS"
+      ],
+      "blind_prompts": [
+        "Is Capstone thread-safe for shared handles?",
+        "Optimize Capstone throughput with cs_disasm_iter."
+      ]
+    },
+    {
+      "skill": "capstone-size-optimized-builds",
+      "required_terms": [
+        "CAPSTONE_BUILD_DIET",
+        "CAPSTONE_X86_REDUCE",
+        "CAPSTONE_USE_ARCH_REGISTRATION"
+      ],
+      "blind_prompts": [
+        "Shrink Capstone with diet mode and unused arch trimming.",
+        "Enable CAPSTONE_X86_REDUCE for a smaller engine."
+      ]
+    },
+    {
+      "skill": "capstone-skill-router",
+      "required_terms": [
+        "capstone-* skill",
+        "cs_open",
+        "v6 migration"
+      ],
+      "blind_prompts": [
+        "Which Capstone skill should I open for a cs_open and skipdata question?",
+        "Route this Capstone API 6 alpha question to the right skill."
+      ]
+    },
+    {
+      "skill": "capstone-skipdata",
+      "required_terms": [
+        "SKIPDATA",
+        "CS_OPT_SKIPDATA_SETUP",
+        "cs_skipdata_cb_t"
+      ],
+      "blind_prompts": [
+        "Enable Capstone skipdata with a custom callback.",
+        "Why is skipdata callback offset different for batch vs iter?"
+      ]
+    },
+    {
+      "skill": "capstone-troubleshooting",
+      "required_terms": [
+        "CS_ERR_*",
+        "Xtensa skipdata size 255",
+        "regs_access"
+      ],
+      "blind_prompts": [
+        "Capstone detail pointer is null and skip sizes look wrong.",
+        "Diagnose CS_ERR_* after a failed cs_option call."
+      ]
+    },
+    {
+      "skill": "capstone-v6-migration",
+      "required_terms": [
+        "CS_ARCH_ARM64",
+        "CS_ARCH_SYSZ",
+        "cs_v6_release_guide"
+      ],
+      "blind_prompts": [
+        "Port Capstone 5 code that uses CS_ARCH_ARM64 to API 6.",
+        "What changed for SystemZ/SYSZ compatibility headers?"
+      ]
+    }
+  ]
+}

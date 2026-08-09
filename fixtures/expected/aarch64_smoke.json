@@ -1,0 +1,14 @@
+{
+  "$schema": "../../schemas/expected-fixture.schema.json",
+  "arch": "CS_ARCH_AARCH64",
+  "mode": "CS_MODE_ARM",
+  "address": "0x1000",
+  "upstream": "tests/details/cs_common_details.yaml",
+  "insns": [
+    {
+      "asm_text": "mrs x9, MIDR_EL1",
+      "mnemonic": "mrs",
+      "op_str": "x9, MIDR_EL1"
+    }
+  ]
+}
