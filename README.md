@@ -1,7 +1,3 @@
-Waiting for ![skills.sh](https://skills.sh/b/FakeHoward/capstone-agent-skills),
-
-Please prefer to install via ```bash npx skills add FakeHoward/capstone-agent-skills```
-
 # capstone-agent-skills
 
 Agent skills for [Capstone Engine](https://github.com/capstone-engine/capstone) on branch `next`, API 6 alpha, pinned commit `1c1f6f4e`. One `skills/` tree works with Cursor, Claude Code, and Codex (Agent Skills `SKILL.md` format). Each skill covers one slice of the C API, a build/tooling path, or a single architecture.
